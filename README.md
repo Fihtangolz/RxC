@@ -1,5 +1,11 @@
-RxC
-===
+# RxC
+---
+Good point to start Reactive programming is 
+- [http://reactivex.io/]()
+- [Reactive Design Patterns by Roland Kuhn]()
+
+# Doc
+---
 - [Creating Observables]()
   - [create]()
   - [defer]()
