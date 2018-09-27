@@ -4,22 +4,19 @@
 
 #include "src/c_lambda.h"
 #include "src/rxc_creating.h"
-#include "src/reflection.h"
+#include "src/c_prototype.h"
 
-RT_REFLECT(test,
+PROTOTYPE((test)(),
+ int b;
+ int k;
+);
+
+PROTOTYPE((test2),
     int b;
     int k;
-)
-
-RT_REFLECT(test2,
-    int b;
-    int k;
-)
+);
 
 int main(){
-//    int a = 42;
-//    int b = !42;
-//    char* f = "SOME";
 ////    LAMBDA((int,a)(int,b)(char,f),(int c, int k),{
 ////
 ////    });
@@ -31,12 +28,11 @@ int main(){
 //    fg();
 
 //    observable.timer(&(struct timespec){.tv_nsec = 12});
-    typeof(test) t1;
-    memcpy(&test,&t1,sizeof(test));
-    if(is_instance(&test, &t1)){
-        printf("YOS");
-    }else{
-        printf("NO");
-    }
+
+    INST_OF(test, t1);
+    INST_OF(test2, ff);
+    printf("%s\n",rt_typeof(&test));
+    printf("%s\n",t1.type);
+    printf("%s\n",ff.type);
     return EXIT_SUCCESS;
 }
