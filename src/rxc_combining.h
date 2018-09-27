@@ -1,35 +1,33 @@
 #ifndef RXC_RXC_COMBINING_H
 #define RXC_RXC_COMBINING_H
 
-typedef struct {} source;
+#include "observer.h"
 
-void rx_combining_and(){
-
-}
-
-void rx_combining_combineLatest(){
+static void rx_combining_and(){
 
 }
 
-void rx_combining_join(){
+static void rx_combining_combineLatest(){
 
 }
 
-source* rx_combining_merge(...){
+static void rx_combining_join(){
 
 }
 
-void rx_combining_startWith(){
+static source* rx_combining_merge(...){
 
 }
 
-source* rx_combining_zip(source*(func)(source*...), source*...){
-    //new source();
-    //.............
+static void rx_combining_startWith(){
+
+}
+
+static source* rx_combining_zip(source*(func)(source*...), source*...){
     //return source;
 }
 
-void rx_combining_switch(){
+static void rx_combining_switch(){
 
 }
 
