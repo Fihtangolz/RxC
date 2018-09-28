@@ -6,33 +6,28 @@
 #include "src/rxc_creating.h"
 #include "src/c_prototype.h"
 
-PROTOTYPE((test)(),
- int b;
- int k;
+PROTOTYPE((test),
+  int b;
+  int k;
 );
 
-PROTOTYPE((test2),
-    int b;
-    int k;
+PROTOTYPE((test2)(test),
+  int b;
+  int k;
 );
 
 int main(){
-////    LAMBDA((int,a)(int,b)(char,f),(int c, int k),{
-////
-////    });
+    INST_OF(test,t1,t2,t3);
+//    printf("%d %d \n", sizeof(&test), sizeof(&t1));
+//    printf("%s\n",rt_typeof(&t1));
+//    printf("%s\n",rt_typeof(&t2));
+//    printf("%s\n",rt_typeof(&t3));
 //
-//    void (^fg)() = ^{
-//        for (int i = 0; i < 100; i++)
-//            printf("%d\n", i);
-//    };
-//    fg();
+//    if(is_same_type(&t1,&t2,&t3,NULL)){
+//        printf("TRUE");
+//    }else{
+//        printf("FALSE");
+//    }
 
-//    observable.timer(&(struct timespec){.tv_nsec = 12});
-
-    INST_OF(test, t1);
-    INST_OF(test2, ff);
-    printf("%s\n",rt_typeof(&test));
-    printf("%s\n",t1.type);
-    printf("%s\n",ff.type);
     return EXIT_SUCCESS;
 }

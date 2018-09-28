@@ -28,24 +28,6 @@ REACT__ ## type (name) = {.private_Name = (initializer), \
                           .get = get__ ## type, \
                           .set = set__ ## set}; \
 
-//{a+b/c << k}[a,b,c,k]
-#define REXPR( code , conversionPoints )
-
-// блокировка рекурсий
-
-//struct {
-//    void* buffer;
-//    void(*func);
-//};
-//
-//void s(){
-//    if(!buffer){
-//        (int)nuffer = 12;
-//    }
-//}
-
-
-
 ?????????????????????????//
 
 //subscribe;
@@ -60,3 +42,21 @@ static struct observable {
   void(*just)();
   void(*interval)();
   void(*from)();
+  
+  
+  ////    LAMBDA((int,a)(int,b)(char,f),(int c, int k),{
+  ////
+  ////    });
+  //
+  //    void (^fg)() = ^{
+  //        for (int i = 0; i < 100; i++)
+  //            printf("%d\n", i);
+  //    };
+  //    fg();
+  
+  Add like test 
+  //    INST_OF(test, t1);
+  //    INST_OF(test2, ff);
+  //    printf("%s\n",rt_typeof(&test));
+  //    printf("%s\n",t1.type);
+  //    printf("%s\n",ff.type);
