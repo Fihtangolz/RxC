@@ -1,8 +1,5 @@
 //Хранить ли старое значение
 // REACT(R/W/RW, type + name + initilizer)
-#if REACT_int
-    #pragma message "asdasd"
-#endif
 
 //горячие холодные коннектабельные
 //subscriber / unsubscribe
@@ -34,15 +31,6 @@ REACT__ ## type (name) = {.private_Name = (initializer), \
 //unsubscribe;
 //request;
 
-static struct observable {
-  void(*start)();
-  void(*timer)(int);
-  void(*repeat)();
-  void(*range)(intmax_t,intmax_t);
-  void(*just)();
-  void(*interval)();
-  void(*from)();
-  
   
   ////    LAMBDA((int,a)(int,b)(char,f),(int c, int k),{
   ////

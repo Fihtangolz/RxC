@@ -1,52 +1,19 @@
 #ifndef RXC_FILTERING_H
 #define RXC_FILTERING_H
 
-static void rx_filtering_debounce(){
+#include "utility.h"
 
-}
-
-static void rx_filtering_distinct(){
-
-}
-
-static void rx_filtering_elementAt(){
-
-}
-
-static void rx_filtering_filter(){
-
-}
-
-static void rx_filtering_first(){
-
-}
-
-static void rx_filtering_ignoreElements(){
-
-}
-
-static void rx_filtering_last(){
-
-}
-
-static void rx_filtering_sample(){
-
-}
-
-static void rx_filtering_skip(){
-
-}
-
-static void rx_filtering_skipLast(){
-
-}
-
-static void rx_filtering_take(){
-
-}
-
-static void rx_filtering_takeLast(){
-
-}
+FUNC_DEF(struct source_t*, debounce, struct source_t* self);
+FUNC_DEF(struct source_t*, distinct, struct source_t* self);
+FUNC_DEF(struct source_t*, element_at, struct source_t* self);
+FUNC_DEF(struct source_t*, filter, struct source_t* self);
+FUNC_DEF(struct source_t*, first, struct source_t* self);
+FUNC_DEF(struct source_t*, ignore_elements, struct source_t* self);
+FUNC_DEF(struct source_t*, last, struct source_t* self);
+FUNC_DEF(struct source_t*, sample, struct source_t* self);
+FUNC_DEF(struct source_t*, skip, struct source_t* self);
+FUNC_DEF(struct source_t*, skip_last, struct source_t* self);
+FUNC_DEF(struct source_t*, take, struct source_t* self);
+FUNC_DEF(struct source_t*, take_last, struct source_t* self);
 
 #endif //RXC_OPERATORS_H

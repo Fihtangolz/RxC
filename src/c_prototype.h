@@ -3,6 +3,7 @@
 
 #include <boost/preprocessor/seq/for_each.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
+#include "ulimit.h"
 
 //TODO add mutation
 //descending mutation
@@ -32,12 +33,6 @@ typedef struct {
     typeof(prototype) instance_name; \
     memcpy(&instance_name, &prototype, sizeof(prototype)); \
 
-#define APPLY_TO_ALL(func, el, ...) \
-     BOOST_PP_SEQ_FOR_EACH( \
-		func, el, \
-		BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__) \
-	) \
-
 #define INST_OF(prototype, ...) APPLY_TO_ALL(CRT_ONE_INST, prototype, __VA_ARGS__)
 
 char* rt_typeof(void* obj){
@@ -50,8 +45,7 @@ bool is_same_type(void* first, ...){
 
     type_t first_el_type = ((base_t*)first)->type;
     for(base_t* curr_el = va_arg(args, base_t*); curr_el != NULL; curr_el = va_arg(args, base_t*)) {
-        type_t g = curr_el->type;
-        if(first_el_type != g){
+        if(first_el_type != curr_el->type){
             va_end(args);
             return false;
         }

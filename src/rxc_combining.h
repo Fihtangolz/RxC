@@ -3,31 +3,31 @@
 
 #include "observer.h"
 
-static void rx_combining_and(){
+source_t* rx_combining_and(source_t* self){
 
 }
 
-static void rx_combining_combineLatest(){
+source_t* rx_combining_combineLatest(source_t* self){
 
 }
 
-static void rx_combining_join(){
+source_t* rx_combining_join(source_t* self){
 
 }
 
-static source* rx_combining_merge(...){
+source_t* rx_combining_merge(source_t* self, ...){
 
 }
 
-static void rx_combining_startWith(){
+source_t* rx_combining_startWith(source_t* self){
 
 }
 
-static source* rx_combining_zip(source*(func)(source*...), source*...){
-    //return source;
+source_t* rx_combining_zip(source_t* self){
+
 }
 
-static void rx_combining_switch(){
+source_t* rx_combining_switch(source_t* self){
 
 }
 

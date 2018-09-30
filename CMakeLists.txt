@@ -9,5 +9,5 @@ set(Boost_LIBRARY_DIR /usr/local/Cellar/boost/1.65.0/lib/)
 find_package(Boost 1.40 COMPONENTS program_options REQUIRED )
 
 include_directories( ${Boost_INCLUDE_DIR} )
-add_executable( RxC main.c src/c_lambda.h)
+add_executable(RxC main.c src/rxc_filtering.c)
 target_link_libraries( RxC ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${Boost_SYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} )

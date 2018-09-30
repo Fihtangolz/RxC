@@ -8,60 +8,61 @@
 #include <time.h>
 #include "observer.h"
 
-static source start(){
-    return (source){};
+static source_t start(){
+    return (source_t){};
 }
 
-static source timer(const struct timespec* delay){
+static source_t timer(const struct timespec* delay){
     nanosleep(delay, NULL);
-    return (source){};
+    return (source_t){};
 }
 
-static source repeat(){
-    return (source){};
+static source_t repeat(){
+    return (source_t){};
 }
 
-static source range(intmax_t  startValue, intmax_t itemsNumber){
+static source_t range(intmax_t  startValue, intmax_t itemsNumber){
     assert(startValue > startValue + itemsNumber && ""); //TODO
     while(itemsNumber){
         printf("%li\n", startValue);
         ++startValue;
         --itemsNumber;
     }
-    return (source){};
+    return (source_t){};
 }
 
-static source just(){
-    return (source){};
+static source_t just(){
+    return (source_t){};
 }
 
-static source interval(){
-    return (source){};
+static source_t interval(){
+    return (source_t){};
 }
 
-static source from(){
-    return (source){};
+static source_t from(){
+    return (source_t){};
 }
 
-static source defer(){
-    return (source){};
+static source_t defer(){
+    return (source_t){};
 }
 
-static source create(){
-    return (source){};
+static source_t create(){
+    return (source_t){};
 }
 
-struct observable {
-    source(*start)();
-    source(*timer)(const struct timespec* delay);
-    source(*repeat)();
-    source(*range)(intmax_t,intmax_t);
-    source(*just)();
-    source(*interval)();
-    source(*from)();
-    source(*defer)();
-    source(*create)();
-} observable = {.start = &start,
+struct {
+    source_t(*start)();
+    source_t(*timer)(const struct timespec* delay);
+    source_t(*repeat)();
+    source_t(*range)(intmax_t,intmax_t);
+    source_t(*just)();
+    source_t(*interval)();
+    source_t(*from)();
+    source_t(*defer)();
+    source_t(*create)();
+} observable = {
+        .start = &start,
         .timer = &timer,
         .repeat = &repeat,
         .range = &range,
@@ -69,6 +70,7 @@ struct observable {
         .interval = &interval,
         .from = &from,
         .defer = &defer,
-        .create = &create};
+        .create = &create,
+};
 
 #endif //OBSERVERS_HPP
