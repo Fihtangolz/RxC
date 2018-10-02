@@ -7,6 +7,7 @@
 #include "src/c_prototype.h"
 
 #include <callback.h>
+#include "src/creating/creating.h"
 
 bool prdc(void* f){
     return false;
@@ -46,17 +47,17 @@ static void emitter_(void* data, va_alist alist) {
 
 int main(){
 
+    observable_range(&source,1,3,12);
 
-
-    int in1 = 10, in2 = 20;
-
-    struct some* s = &(struct some){ 1,2,3,4 };
-
-    int (*emitter)() = alloc_callback(&emitter_, s);
-    int (*incrementer_)() = alloc_callback(&incrementer_, s);
-
-    emitter(42,43,44,45);
-    emitter(42,43,44,45);
+//    int in1 = 10, in2 = 20;
+//
+//    struct some* s = &(struct some){ 1,2,3,4 };
+//
+//    int (*emitter)() = alloc_callback(&emitter_, s);
+//    int (*incrementer_)() = alloc_callback(&incrementer_, s);
+//
+//    emitter(42,43,44,45);
+//    emitter(42,43,44,45);
 
 //    free_callback(incrementer1);
 //    free_callback(incrementer2);
@@ -65,3 +66,4 @@ int main(){
 
     return EXIT_SUCCESS;
 }
+

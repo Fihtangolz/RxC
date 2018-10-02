@@ -4,5 +4,7 @@
 typedef struct {
 } throwable;
 
+throw(){
 
+}
 #endif //RXC_RXC_ERROR_H

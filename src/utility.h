@@ -13,7 +13,7 @@
 
 #define FUNC_DEF(ret_type, name, args) \
 typedef ret_type (*func_ ## name ## _t)(args); \
-func_ ## name ## _t name(args) \
+ret_type name(args) \
 
 #define CRT_ONE_FIELD(_1, _2, name) BOOST_PP_CAT(BOOST_PP_CAT(func_, name),_t) name;
 #define FIELDS_CRT(...) APPLY_TO_ALL(CRT_ONE_FIELD, _, __VA_ARGS__)
