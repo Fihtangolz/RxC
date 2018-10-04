@@ -1,4 +1,5 @@
-//
-// Created by dns on 03.10.18.
-//
+#include "creating.h"
 
+source_t* start(){
+    return 1;
+}

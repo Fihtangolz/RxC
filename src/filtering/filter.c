@@ -1,29 +1,37 @@
 #include "filtering.h"
 #include "../c_prototype.h"
+#include "../observer.h"
+#include <stdlib.h>
 
 extern source_t source;
 
-void* filter_on_next(source_t* self, bool(*predicat)(void*)){
-//    for(void* curr_el = self->on_next(self); curr_el != NULL; curr_el = self->on_next(self)){
-//        if(predicat(curr_el)){
-//            return curr_el;
-//        }
-//    }
+typedef struct {
+    source_t* self;
+    bool(*predicat)(void*);
+} captured_t;
+
+static void on_next(void* capture, va_alist arg_list){
+    captured_t* cp = capture;
+
+    va_start_ptr(arg_list,void*);
+    void* obj = va_arg_ptr(arg_list,void*);
+    if(cp->predicat(obj)){
+        for (source_t** curr_el = cp->self->subscribers; *curr_el!= NULL; curr_el++) {
+            (*curr_el)->on_next(obj);
+        }
+    }
 }
 
-void* filter_on_error(source_t* self){
-//    void* error = self->on_error(self);
-//    if(error != NULL){
-//        return error;
-//    }
-}
+source_t* filter(source_t* previous_source, bool(*predicat)(void*)){
+    D_INST_OF(source, s);
+    captured_t* cp = malloc(sizeof(captured_t));
+    cp->self = s;
+    cp->predicat = predicat;
 
-void filter_on_completed(source_t* self){
+    append_subscriber(previous_source, s);
+    s->on_next = alloc_callback(on_next, cp);
+    s->on_completed = alloc_callback(dummy_on_completed, s);
+    s->on_error = alloc_callback(dummy_on_error, s);
 
-}
-
-source_t* filter(source_t* self, bool(*predicat)(void*)){
-    D_INST_OF(source,s);
-    
-    return self;
+    return s;
 }

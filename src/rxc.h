@@ -1,8 +1,8 @@
-//
-// Created by dns on 04.10.18.
-//
+#ifndef RXC_H
+#define RXC_H
 
-#ifndef RXC_RXC_H
-#define RXC_RXC_H
+#include "observer.h"
+#include "creating/creating.h"
+#include "filtering/filtering.h""
 
-#endif //RXC_RXC_H
+#endif //RXC_H

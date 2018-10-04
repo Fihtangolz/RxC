@@ -4,14 +4,15 @@
 #include "../observer.h"
 #include "../rxc_error.h"
 
-#define CHECK_ADD_OVERFLOW(arg1, arg2, result) _Generic((arg1), \
-default: __builtin_add_overflow, \
-int: __builtin_sadd_overflow, \
-long int: __builtin_saddl_overflow, \
-long long int: __builtin_saddll_overflow, \
-unsigned int: __builtin_uadd_overflow, \
-unsigned long int: __builtin_uaddl_overflow, \
-unsigned long long int: __builtin_uaddll_overflow \
+#define CHECK_ADD_OVERFLOW(arg1, arg2, result) \
+_Generic((arg1), \
+    default: __builtin_add_overflow, \
+    int: __builtin_sadd_overflow, \
+    long int: __builtin_saddl_overflow, \
+    long long int: __builtin_saddll_overflow, \
+    unsigned int: __builtin_uadd_overflow, \
+    unsigned long int: __builtin_uaddl_overflow, \
+    unsigned long long int: __builtin_uaddll_overflow \
 )(arg1, arg2, result) \
 
 
@@ -26,7 +27,6 @@ typedef struct {
 
 static void on_next(void* capture, va_alist arg_list){
     captured_t* cp = capture;
-
     if(cp->itemsNumber) {
         --cp->itemsNumber;
         for (source_t** curr_el = cp->self->subscribers; *curr_el!= NULL; curr_el++) {
