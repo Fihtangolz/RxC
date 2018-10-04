@@ -21,15 +21,13 @@ source_t* interval();
 source_t* just(void* item);
 
 #define NUMERICAL_BODY \
-intmax_t value;\
+    SMART_POINTER_BODY \
+    intmax_t value; \
 
-typedef struct {
-    BASE_BODY
-    COUNTER_BODY
-    NUMERICAL_BODY
-} numerical_t;
+GEN_LAYOUT(numerical, NUMERICAL_BODY)
 
 source_t* range(intmax_t startValue, intmax_t itemsNumber, intmax_t step);
+
 source_t* repeat(void* item, intmax_t step);
 source_t* start();
 source_t* timer(struct timespec* delay);

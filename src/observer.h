@@ -33,7 +33,7 @@ source_t*  subscribe(
     source_t* operator,
     void(*on_next)(void* obj),
     void(*on_completed)(),
-    void(*on_error)(throwable_t* error),
+    void(*on_error)(layout_throwable_t* error),
     void(*on_subscribe)(struct source_t* target, source_t* subscriber),
     void(*on_unsubscribe)(struct source_t* target, source_t* subscriber)
 );

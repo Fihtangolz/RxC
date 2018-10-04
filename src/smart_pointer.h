@@ -4,13 +4,12 @@
 #include <stdlib.h>
 #include "prototype/c_prototype.h"
 
-#define COUNTER_BODY int counter;
+#define SMART_POINTER_BODY \
+BASE_BODY \
+int counter; \
 
-typedef struct {
-    BASE_BODY
-    COUNTER_BODY
-} smart_pointer_t;
+GEN_LAYOUT(smart_pointer,SMART_POINTER_BODY);
 
-void sm_free(smart_pointer_t* target);
+void sm_free(layout_smart_pointer_t* target);
 
 #endif //RXC_SMART_POINTER_H

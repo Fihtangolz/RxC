@@ -33,8 +33,8 @@ void dummy_on_completed(void* capture, va_alist arg_list){
 void dummy_on_error(void* capture, va_alist arg_list){
     source_t* self = capture;
 
-    va_start_ptr(arg_list, throwable_t*);
-    throwable_t* obj = va_arg_ptr(arg_list, throwable_t*);
+    va_start_ptr(arg_list, layout_throwable_t*);
+    layout_throwable_t* obj = va_arg_ptr(arg_list, layout_throwable_t*);
 
     self->is_active = false;
     for (source_t** curr_el = self->subscribers; *curr_el != NULL; curr_el++) {
@@ -75,7 +75,7 @@ source_t*  subscribe(
     source_t* operator,
     void(*on_next)(void* obj),
     void(*on_completed)(),
-    void(*on_error)(throwable_t* error),
+    void(*on_error)(layout_throwable_t* error),
     void(*on_subscribe)(struct source_t* target, source_t* subscriber),
     void(*on_unsubscribe)(struct source_t* target, source_t* subscriber)
 ){

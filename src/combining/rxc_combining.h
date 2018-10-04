@@ -1,7 +1,7 @@
 #ifndef RXC_RXC_COMBINING_H
 #define RXC_RXC_COMBINING_H
 
-#include "observer.h"
+#include "../observer.h"
 
 source_t* rx_combining_and(source_t* self){
 

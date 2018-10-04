@@ -33,12 +33,12 @@ static void on_next(void* capture, va_alist arg_list){
     if(cp->itemsNumber) {
         --cp->itemsNumber;
         for (source_t** curr_el = cp->self->subscribers; *curr_el!= NULL; curr_el++) {
-            numerical_t* copy = malloc(sizeof(numerical_t));
+            layout_numerical_t* copy = malloc(sizeof(layout_numerical_t));
             copy->value = cp->startValue;
             (*curr_el)->on_next(copy);
         }
         if (CHECK_ADD_OVERFLOW(cp->startValue, cp->step, &cp->startValue)) {
-            throwable_t* error = malloc(sizeof(throwable_t));
+            layout_throwable_t* error = malloc(sizeof(layout_throwable_t));
             error->source = cp->self;
             error->description = "overflow";
             cp->self->on_error(error);
