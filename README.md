@@ -23,7 +23,7 @@ int main(){
     }));
     source_t* s4 = last(s3);
 
-    subscribe(s1, s3,
+    subscribe(s1, s4,
     LAMBDA(void,(void* obj), {
         printf("Hello react: %lli\n", *(int*)(obj));
     }),
