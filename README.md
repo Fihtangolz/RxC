@@ -14,18 +14,18 @@ Example:
 #include "src/rxc.h"
 
 int main(){
-    source_t* s1 = range(1, 10, 12);
+    source_t* s1 = range(0, 15, 1); //replace step to INTMAX_MAX/10 for see throwing
     source_t* s2 = filter(s1, LAMBDA(bool,(void* f), {
-        return !((*(int*)f) % 2);
+        return !((*(intmax_t *)f) % 2);
     }));
     source_t* s3 = filter(s2, LAMBDA(bool,(void* f), {
-        return true;
+        return (*(intmax_t*)f) < 10;
     }));
     source_t* s4 = last(s3);
 
-    subscribe(s1, s1,
+    subscribe(s1, s3,
     LAMBDA(void,(void* obj), {
-        printf("Hello react: %d\n", *(int*)(obj));
+        printf("Hello react: %lli\n", *(int*)(obj));
     }),
     LAMBDA(void,(), {
         printf("I'ev completed\n");
