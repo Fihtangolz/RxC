@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include "../observer.h"
+#include "../utility.h"
 
 extern source_t source;
 

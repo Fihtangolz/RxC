@@ -1,13 +1,9 @@
 #ifndef RXC_OBSERVER_H
 #define RXC_OBSERVER_H
 
-#include <memory.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <callback.h>
 #include <stdbool.h>
-
-#include "utility.h"
-#include "functional/c_functional.h"
 #include "rxc_error.h"
 
 #define subscribers_t_size 8*5
@@ -18,7 +14,7 @@ typedef struct {
     subscribers_t subscribers;
     void(*on_next)(void* obj);
     void(*on_completed)();
-    void(*on_error)(throwable_t* error);
+    void(*on_error)(struct throwable_t* error);
     void(*on_subscribe)(struct source_t* target, struct source_t* subscriber);
     void(*on_unsubscribe)(struct source_t* target, struct source_t* subscriber);
 

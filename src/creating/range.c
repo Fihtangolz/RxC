@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include "../observer.h"
 #include "../rxc_error.h"
+#include "../prototype/c_prototype.h"
+#include "../utility.h"
+#include "../smart_pointer.h"
+#include "../rxc.h"
 
 #define CHECK_ADD_OVERFLOW(arg1, arg2, result) \
 _Generic((arg1), \
@@ -14,7 +18,6 @@ _Generic((arg1), \
     unsigned long int: __builtin_uaddl_overflow, \
     unsigned long long int: __builtin_uaddll_overflow \
 )(arg1, arg2, result) \
-
 
 extern source_t source;
 
@@ -30,10 +33,12 @@ static void on_next(void* capture, va_alist arg_list){
     if(cp->itemsNumber) {
         --cp->itemsNumber;
         for (source_t** curr_el = cp->self->subscribers; *curr_el!= NULL; curr_el++) {
-            (*curr_el)->on_next(&cp->startValue);
+            numerical_t* copy = malloc(sizeof(numerical_t));
+            copy->value = cp->startValue;
+            (*curr_el)->on_next(copy);
         }
         if (CHECK_ADD_OVERFLOW(cp->startValue, cp->step, &cp->startValue)) {
-            throwable_t* error = malloc(sizeof(throwable_t)); //TODO malloc NULL handle
+            throwable_t* error = malloc(sizeof(throwable_t));
             error->source = cp->self;
             error->description = "overflow";
             cp->self->on_error(error);

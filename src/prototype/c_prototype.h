@@ -8,11 +8,6 @@
 #include "stddef.h"
 #include "stdbool.h"
 
-//TODO add mutation
-//descending mutation
-//ascending mutation
-//shift down
-
 typedef char* type_t;
 
 #define BASE_BODY \
@@ -22,16 +17,15 @@ typedef struct {
     BASE_BODY
 } base_t;
 
-// TODO подумать как заменить на алиасы
+#define PROTOTYPE(seq, struct_body) \
+    struct BOOST_PP_CAT(BOOST_PP_SEQ_ELEM(0, seq), _proto_t) { \
+        BASE_BODY \
+        struct_body \
+    } BOOST_PP_SEQ_ELEM(0, seq) = {.type = BOOST_PP_STRINGIZE(BOOST_PP_SEQ_ELEM(0, seq))}; \
+
 // name BOOST_PP_SEQ_ELEM(0, seq)
 // mutation BOOST_PP_SEQ_ELEM(1, seq)
 #define IMPORT(lib_name) BOOST_PP_CAT(lib_name, _t) lib_name
-
-#define PROTOTYPE(seq, struct_body) \
-    struct BOOST_PP_CAT(BOOST_PP_SEQ_ELEM(0, seq), _t) { \
-        BASE_BODY \
-        struct_body \
-    } BOOST_PP_SEQ_ELEM(0, seq) = {.type = BOOST_PP_STRINGIZE(BOOST_PP_SEQ_ELEM(0, seq)) } \
 
 /* INST_OF */
 #define CRT_ONE_S_INST(_, prototype, instance_name) \

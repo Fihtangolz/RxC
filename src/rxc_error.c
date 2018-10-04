@@ -1,3 +1,5 @@
 #include "rxc_error.h"
 
-//INTMAX_MAX/10
+struct source_t* throw(struct source_t* previous_source){
+
+}

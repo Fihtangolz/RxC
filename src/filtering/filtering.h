@@ -3,6 +3,7 @@
 
 #include "../observer.h"
 #include "stdbool.h"
+#include "../utility.h"
 
 source_t* debounce(source_t* previous_source);
 source_t* distinct(source_t* previous_source);

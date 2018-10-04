@@ -1,5 +1,5 @@
 #include "filtering.h"
-#include "../c_prototype.h"
+#include "../prototype/c_prototype.h"
 #include "../observer.h"
 #include <stdlib.h>
 

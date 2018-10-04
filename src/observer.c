@@ -1,8 +1,9 @@
-#include <stddef.h>
-#include <stdlib.h>
 #include "observer.h"
-#include "filtering/filtering.h"
-#include "c_prototype.h"
+#include "rxc_error.h"
+#include "prototype/c_prototype.h"
+#include "utility.h"
+#include "functional/c_functional.h"
+#include <stdlib.h>
 
 void dummy_on_next(void* capture, va_alist arg_list){
     source_t* self = capture;
@@ -94,7 +95,7 @@ source_t*  subscribe(
         }
     }
 
-    return s;
+    return 1;
 }
 
 void* unsubscribe(source_t* producer, source_t* subscriber){

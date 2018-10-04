@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "filtering.h"
 
-#include "../c_prototype.h"
+#include "../prototype/c_prototype.h"
 #include "../observer.h"
 
 extern source_t source;
