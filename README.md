@@ -25,7 +25,7 @@ int main(){
 
     subscribe(s1, s4,
     LAMBDA(void,(void* obj), {
-        printf("Hello react: %lli\n", *(int*)(obj));
+        printf("Hello react: %lli\n", *(intmax_t*)(obj));
     }),
     LAMBDA(void,(), {
         printf("I'ev completed\n");
