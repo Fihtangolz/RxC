@@ -6,6 +6,7 @@
 #include "ulimit.h"
 #include "stdarg.h"
 #include "stddef.h"
+#include "stdbool.h"
 
 //TODO add mutation
 //descending mutation
@@ -33,11 +34,16 @@ typedef struct {
     } BOOST_PP_SEQ_ELEM(0, seq) = {.type = BOOST_PP_STRINGIZE(BOOST_PP_SEQ_ELEM(0, seq)) } \
 
 /* INST_OF */
-#define CRT_ONE_INST(_, prototype, instance_name) \
+#define CRT_ONE_S_INST(_, prototype, instance_name) \
     typeof(prototype) instance_name; \
     memcpy(&instance_name, &prototype, sizeof(prototype)); \
 
-#define INST_OF(prototype, ...) APPLY_TO_ALL(CRT_ONE_INST, prototype, __VA_ARGS__)
+#define CRT_ONE_D_INST(_, prototype, instance_name) \
+    typeof(prototype)* instance_name = malloc(sizeof(prototype)); \
+    memcpy(instance_name, &prototype, sizeof(prototype)); \
+
+#define S_INST_OF(prototype, ...) APPLY_TO_ALL(CRT_ONE_S_INST, prototype, __VA_ARGS__)
+#define D_INST_OF(prototype, ...) APPLY_TO_ALL(CRT_ONE_D_INST, prototype, __VA_ARGS__)
 
 char* rt_typeof(void* obj);
 

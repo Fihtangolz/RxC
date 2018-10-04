@@ -4,10 +4,12 @@
 #include <boost/preprocessor.hpp>
 
 #if !(defined(__GNUC__) || defined(__GNUG__) || defined(__clang__))
-    #warning "work on your compiler is not guaranteed"
+    #error "your's compiler not supported"
 #endif
 
-#define MACRO(r, data, i, elem) BOOST_PP_CAT(elem, BOOST_PP_CAT(data, i))
+//call a function without putting anything on stack
+#define JUST_CALL(func_name) ((void(*)())(func_name))()
+
 #define LAMBDA(campture_list, args) BOOST_PP_SEQ_FOR_EACH_I(MACRO, _, campture_list)
 
 #endif //RXC_C_LAMBDA_H
