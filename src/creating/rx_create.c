@@ -1,5 +1,8 @@
-#include "creating.h"
+/*!
+ * @file
+ */
+#include "rx_creating.h"
 
-source_t* create(){
+source_t* rx_create(){
     return 1;
 }

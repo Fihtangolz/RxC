@@ -2,3 +2,5 @@
 \.idea/
 
 cmake-build-debug/
+
+doc/doc_doxygen/

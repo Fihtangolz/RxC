@@ -1,8 +1,8 @@
 #include <stdlib.h>
-#include "filtering.h"
+#include "rx_filtering.h"
 
-#include "../prototype/c_prototype.h"
-#include "../observer.h"
+#include "../prototype/rx_prototype.h"
+#include "../rx_observer.h"
 
 extern source_t source;
 

@@ -1,11 +1,14 @@
-#include "creating.h"
+/*!
+ * @file
+ */
+#include "rx_creating.h"
 
 #include <stdlib.h>
-#include "../observer.h"
-#include "../rxc_error.h"
-#include "../prototype/c_prototype.h"
-#include "../utility.h"
-#include "../smart_pointer.h"
+#include "../rx_observer.h"
+#include "../rx_error.h"
+#include "../prototype/rx_prototype.h"
+#include "../rx_utility.h"
+#include "../rx_smart_pointer.h"
 #include "../rxc.h"
 
 #define CHECK_ADD_OVERFLOW(arg1, arg2, result) \
@@ -32,9 +35,10 @@ static void on_next(void* capture, va_alist arg_list){
     captured_t* cp = capture;
     if(cp->itemsNumber) {
         --cp->itemsNumber;
+
+        layout_numerical_t* copy = malloc(sizeof(layout_numerical_t));
+        copy->value = cp->startValue;
         for (source_t** curr_el = cp->self->subscribers; *curr_el!= NULL; curr_el++) {
-            layout_numerical_t* copy = malloc(sizeof(layout_numerical_t));
-            copy->value = cp->startValue;
             (*curr_el)->on_next(copy);
         }
         if (CHECK_ADD_OVERFLOW(cp->startValue, cp->step, &cp->startValue)) {
@@ -50,12 +54,19 @@ static void on_next(void* capture, va_alist arg_list){
     return;
 }
 
-source_t* range(intmax_t startValue, intmax_t itemsNumber, intmax_t step) {
+/*!
+ * Create producer that emits a particular range of sequential integers
+ * @param start_value The first element of the sequence
+ * @param items_number Numbers of element in the sequence
+ * @param step Step of sequence
+ * @return Producer
+ */
+source_t* rx_range(intmax_t start_value, intmax_t items_number, intmax_t step) {
     D_INST_OF(source,s);
     captured_t* cp = malloc(sizeof(captured_t));
     cp->self = s;
-    cp->startValue = startValue;
-    cp->itemsNumber = itemsNumber;
+    cp->startValue = start_value;
+    cp->itemsNumber = items_number;
     cp->step = step;
 
     s->on_next = alloc_callback(on_next, cp);

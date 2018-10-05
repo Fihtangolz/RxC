@@ -1,5 +1,5 @@
-#ifndef RXC_C_LAMBDA_H
-#define RXC_C_LAMBDA_H
+#ifndef RXC_FUNCTIONAL_H
+#define RXC_FUNCTIONAL_H
 
 #include <boost/preprocessor.hpp>
 
@@ -13,4 +13,4 @@
     &l_anonymous_functions_name;                        \
   })
 
-#endif //RXC_C_LAMBDA_H
+#endif //RXC_FUNCTIONAL_H

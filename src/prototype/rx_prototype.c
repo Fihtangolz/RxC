@@ -1,4 +1,4 @@
-#include "c_prototype.h"
+#include "rx_prototype.h"
 
 char* rt_typeof(void* obj){
     return ((layout_base_t*)obj)->type;

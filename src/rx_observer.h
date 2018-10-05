@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <callback.h>
 #include <stdbool.h>
-#include "rxc_error.h"
+#include "rx_error.h"
 
 #define subscribers_t_size 8*5
 typedef struct source_t* subscribers_t[subscribers_t_size];

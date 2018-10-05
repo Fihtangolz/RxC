@@ -1,9 +1,12 @@
-#include "creating.h"
+/*!
+ * @file
+ */
+#include "rx_creating.h"
 
 #include <stdlib.h>
-#include "../prototype/c_prototype.h"
-#include "../observer.h"
-#include "../utility.h"
+#include "../prototype/rx_prototype.h"
+#include "../rx_observer.h"
+#include "../rx_utility.h"
 
 extern source_t source;
 
@@ -24,12 +27,18 @@ static void on_next(void* capture, va_alist arg_list){
     cp->self->on_completed();
 }
 
-source_t* repeat(void* item, intmax_t step){
+/*!
+ * Create Create producer that emit repeatedly single item
+ * @param item Emitted item
+ * @param item_number Number of items
+ * @return Producer
+ */
+source_t* rx_repeat(void *item, intmax_t item_number){
     D_INST_OF(source,s);
     captured_t* cp = malloc(sizeof(captured_t));
     cp->self = s;
     cp->item = item;
-    cp->number = step;
+    cp->number = item_number;
 
     s->on_next = alloc_callback(on_next, cp);
     s->on_completed = alloc_callback(dummy_on_completed, s);

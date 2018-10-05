@@ -1,11 +1,11 @@
 #ifndef RXC_H
 #define RXC_H
 
-#include "observer.h"
-#include "creating/creating.h"
-#include "filtering/filtering.h"
-#include "functional/c_functional.h"
-#include "smart_pointer.h"
-#include "rxc_error.h"
+#include "rx_observer.h"
+#include "creating/rx_creating.h"
+#include "filtering/rx_filtering.h"
+#include "functional/rx_functional.h"
+#include "rx_smart_pointer.h"
+#include "rx_error.h"
 
 #endif //RXC_H

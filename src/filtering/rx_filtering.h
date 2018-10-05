@@ -1,9 +1,9 @@
 #ifndef RXC_FILTERING_H
 #define RXC_FILTERING_H
 
-#include "../observer.h"
+#include "../rx_observer.h"
 #include "stdbool.h"
-#include "../utility.h"
+#include "../rx_utility.h"
 
 source_t* debounce(source_t* previous_source);
 source_t* distinct(source_t* previous_source);

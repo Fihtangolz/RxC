@@ -1,5 +1,5 @@
-#ifndef RXC_REFLECTION_H
-#define RXC_REFLECTION_H
+#ifndef RXC_PROTOTYPE_H
+#define RXC_PROTOTYPE_H
 
 #include <boost/preprocessor/seq/for_each.hpp>
 #include <boost/preprocessor/variadic/to_seq.hpp>
@@ -47,4 +47,4 @@ bool is_instance(void* obj1, void* obj2);
 
 #define IMPORT(lib_name) BOOST_PP_CAT(lib_name, _t) lib_name
 
-#endif //RXC_REFLECTION_H
+#endif //RXC_PROTOTYPE_H

@@ -1,6 +1,9 @@
-#include "creating.h"
+/*!
+ * @file
+ */
+#include "rx_creating.h"
 
-source_t* interval(){
+source_t* rx_interval(){
     return 1;
 }
 

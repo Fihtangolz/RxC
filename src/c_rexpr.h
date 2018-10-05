@@ -1,5 +1,5 @@
-#ifndef RXC_C_REXPR_H
-#define RXC_C_REXPR_H
+#ifndef RXC_REXPR_H
+#define RXC_REXPR_H
 
 // блокировка рекурсий
 

@@ -1,8 +1,8 @@
-#include "observer.h"
-#include "rxc_error.h"
-#include "prototype/c_prototype.h"
-#include "utility.h"
-#include "functional/c_functional.h"
+#include "rx_observer.h"
+#include "rx_error.h"
+#include "prototype/rx_prototype.h"
+#include "rx_utility.h"
+#include "functional/rx_functional.h"
 #include <stdlib.h>
 
 void dummy_on_next(void* capture, va_alist arg_list){

@@ -1,8 +1,11 @@
-#include "creating.h"
+/*!
+ * @file
+ */
+#include "rx_creating.h"
 
 #include <stdlib.h>
-#include "../observer.h"
-#include "../utility.h"
+#include "../rx_observer.h"
+#include "../rx_utility.h"
 
 extern source_t source;
 
@@ -21,7 +24,12 @@ static void on_next(void* capture, va_alist arg_list){
     cp->self->on_completed();
 }
 
-source_t* just(void* item) {
+/*!
+ *
+ * @param item
+ * @return
+ */
+source_t* rx_just(void *item) {
     D_INST_OF(source,s);
     captured_t* cp = malloc(sizeof(captured_t));
     cp->self = s;

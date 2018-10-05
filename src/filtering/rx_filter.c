@@ -1,6 +1,6 @@
-#include "filtering.h"
-#include "../prototype/c_prototype.h"
-#include "../observer.h"
+#include "rx_filtering.h"
+#include "../prototype/rx_prototype.h"
+#include "../rx_observer.h"
 #include <stdlib.h>
 
 extern source_t source;
@@ -22,7 +22,7 @@ static void on_next(void* capture, va_alist arg_list){
     }
 }
 
-source_t* filter(source_t* previous_source, bool(*predicat)(void*)){
+source_t* rx_filter(source_t *previous_source, bool(*predicat)(void *)){
     D_INST_OF(source, s);
     captured_t* cp = malloc(sizeof(captured_t));
     cp->self = s;
