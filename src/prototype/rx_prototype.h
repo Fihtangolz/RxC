@@ -45,8 +45,6 @@ bool is_instance(void* obj1, void* obj2);
         struct_body \
     } BOOST_PP_SEQ_ELEM(0, seq) = {.type = BOOST_PP_STRINGIZE(BOOST_PP_SEQ_ELEM(0, seq))}; \
 
-// name BOOST_PP_SEQ_ELEM(0, seq)
-// mutation BOOST_PP_SEQ_ELEM(1, seq)
 #define IMPORT(lib_name) BOOST_PP_CAT(lib_name, _t) lib_name
 
 #endif //RXC_REFLECTION_H

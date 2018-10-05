@@ -1,5 +1,5 @@
-#ifndef OBSERVERS_HPP
-#define OBSERVERS_HPP
+#ifndef RXC_CREATING_H
+#define RXC_CREATING_H
 
 #include "../observer.h"
 #include <callback.h>
@@ -21,8 +21,8 @@ source_t* interval();
 source_t* just(void* item);
 
 #define NUMERICAL_BODY \
-    SMART_POINTER_BODY \
-    intmax_t value; \
+SMART_POINTER_BODY \
+intmax_t value; \
 
 GEN_LAYOUT(numerical, NUMERICAL_BODY)
 
@@ -32,4 +32,4 @@ source_t* repeat(void* item, intmax_t step);
 source_t* start();
 source_t* timer(struct timespec* delay);
 
-#endif //OBSERVERS_HPP
+#endif //RXC_CREATING_H

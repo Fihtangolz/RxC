@@ -8,7 +8,7 @@
 source_t* debounce(source_t* previous_source);
 source_t* distinct(source_t* previous_source);
 source_t* element_at(source_t* previous_source);
-source_t* filter(source_t* previous_source, bool(*predicat)(void*));
+source_t* rx_filter(source_t *previous_source, bool(*predicat)(void *));
 source_t* first(source_t* previous_source);
 source_t* ignore_elements(source_t* previous_source);
 source_t* last(source_t* previous_source);
@@ -18,4 +18,4 @@ source_t* skip_last(source_t* previous_source);
 source_t* take(source_t* previous_source);
 source_t* take_last(source_t* previous_source);
 
-#endif //RXC_OPERATORS_H
+#endif //RXC_FILTERING_H

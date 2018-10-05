@@ -23,6 +23,10 @@ ret_type name(args) \
 #define INIT_ONE_FIELD(_1, _2, name) BOOST_PP_CAT(BOOST_PP_CAT(BOOST_PP_CAT(DOT,name),=),name)
 #define FIELDS_INIT(...) APPLY_TO_ALL(INIT_ONE_FIELD, _, __VA_ARGS__)
 
-#define CALL_CHAINE(...)
+#define CALL_CHAINE(arg) macro_ ## arg
+#define macro_range(...)
+#define macro_filter(...)
+#define macro_last(...)
+#define macro_subscribe(...)
 
 #endif //RXC_UTILITY_H
