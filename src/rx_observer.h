@@ -20,9 +20,9 @@ typedef struct {
 
 } source_t;
 
-void dummy_on_next(void* capture, va_alist arg_list);
-void dummy_on_completed(void* capture, va_alist arg_list);
-void dummy_on_error(void* capture, va_alist arg_list);
+void default_on_next(void *capture, va_alist arg_list);
+void default_on_completed(void *capture, va_alist arg_list);
+void default_on_error(void *capture, va_alist arg_list);
 
 void append_subscriber(source_t* target, source_t* subscriber);
 void func_on_next(source_t* el, void* passed_argument);
@@ -33,7 +33,7 @@ source_t*  subscribe(
     source_t* operator,
     void(*on_next)(void* obj),
     void(*on_completed)(),
-    void(*on_error)(layout_throwable_t* error),
+    void(*on_error)(LAYOUT(THOWABLE) error),
     void(*on_subscribe)(struct source_t* target, source_t* subscriber),
     void(*on_unsubscribe)(struct source_t* target, source_t* subscriber)
 );

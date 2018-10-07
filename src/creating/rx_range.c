@@ -26,23 +26,25 @@ extern source_t source;
 
 typedef struct {
     source_t* self;
-    intmax_t startValue;
-    intmax_t itemsNumber;
+    intmax_t start_value;
+    intmax_t items_number;
     intmax_t step;
 } captured_t;
 
 static void on_next(void* capture, va_alist arg_list){
     captured_t* cp = capture;
-    if(cp->itemsNumber) {
-        --cp->itemsNumber;
+    if(cp->items_number) {
+        --cp->items_number;
 
-        layout_numerical_t* copy = malloc(sizeof(layout_numerical_t));
-        copy->value = cp->startValue;
+        LAYOUT(NUMERICAL) copy = malloc(sizeof(LAYOUT(NUMERICAL)));
+        copy->value = cp->start_value;
+        sm_hold(copy);
         for (source_t** curr_el = cp->self->subscribers; *curr_el!= NULL; curr_el++) {
             (*curr_el)->on_next(copy);
         }
-        if (CHECK_ADD_OVERFLOW(cp->startValue, cp->step, &cp->startValue)) {
-            layout_throwable_t* error = malloc(sizeof(layout_throwable_t));
+        sm_free(copy);
+        if (CHECK_ADD_OVERFLOW(cp->start_value, cp->step, &cp->start_value)) {
+            LAYOUT(THOWABLE) error = malloc(sizeof(LAYOUT(THOWABLE)));
             error->source = cp->self;
             error->description = "overflow";
             cp->self->on_error(error);
@@ -65,13 +67,13 @@ source_t* rx_range(intmax_t start_value, intmax_t items_number, intmax_t step) {
     D_INST_OF(source,s);
     captured_t* cp = malloc(sizeof(captured_t));
     cp->self = s;
-    cp->startValue = start_value;
-    cp->itemsNumber = items_number;
+    cp->start_value = start_value;
+    cp->items_number = items_number;
     cp->step = step;
 
     s->on_next = alloc_callback(on_next, cp);
-    s->on_completed = alloc_callback(dummy_on_completed, s);
-    s->on_error = alloc_callback(dummy_on_error, s);
+    s->on_completed = alloc_callback(default_on_completed, s);
+    s->on_error = alloc_callback(default_on_error, s);
 
     return s;
 }

@@ -14,19 +14,18 @@
 #include "../rxc.h"
 #include "../rx_smart_pointer.h"
 
-source_t* rx_create();
-source_t* defer();
+source_t* rx_create(void(*func1)(source_t* self), void(*func2)(source_t* self), void(*func3)(source_t* self));
+source_t* rx_defer();
 source_t* rx_from();
 source_t* rx_interval();
 source_t* rx_just(void *item);
 
 /// PROTOTYPE ////////////////////////
 #define NUMERICAL_BODY \
-        BASE_BODY \
         SMART_POINTER_BODY \
         intmax_t value; \
 //////////////////////////////////////
-GEN_LAYOUT(numerical, NUMERICAL_BODY)
+GEN_LAYOUT(NUMERICAL)
 //////////////////////////////////////
 
 source_t* rx_range(intmax_t start_value, intmax_t items_number, intmax_t step);
@@ -37,10 +36,9 @@ source_t* rx_start(void(*func)(source_t* self));
 
 /// PROTOTYPE ////////////////////////
 #define NOTIFY_BODY \
-        BASE_BODY \
         SMART_POINTER_BODY \
 //////////////////////////////////////
-GEN_LAYOUT(notify, NOTIFY_BODY)
+GEN_LAYOUT(NOTIFY)
 //////////////////////////////////////
 
 source_t* rx_timer(struct timespec *delay);

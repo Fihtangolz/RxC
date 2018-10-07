@@ -1,7 +1,9 @@
 #include "rx_filtering.h"
+
+#include <stdlib.h>
+
 #include "../prototype/rx_prototype.h"
 #include "../rx_observer.h"
-#include <stdlib.h>
 
 extern source_t source;
 
@@ -30,8 +32,8 @@ source_t* rx_filter(source_t *previous_source, bool(*predicat)(void *)){
 
     append_subscriber(previous_source, s);
     s->on_next = alloc_callback(on_next, cp);
-    s->on_completed = alloc_callback(dummy_on_completed, s);
-    s->on_error = alloc_callback(dummy_on_error, s);
+    s->on_completed = alloc_callback(default_on_completed, s);
+    s->on_error = alloc_callback(default_on_error, s);
 
     return s;
 }

@@ -13,8 +13,8 @@ include_directories(/usr/local/include ${Boost_INCLUDE_DIR} )
 
 file(GLOB_RECURSE HEADER RELATIVE ${CMAKE_SOURCE_DIR} "src/*.h")
 file(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
-add_executable(RxC main2.c ${HEADER} ${SOURCES})
-target_link_libraries( RxC ffcall ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${Boost_SYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} )
+add_executable(RxC examples/ex2.c ${HEADER} ${SOURCES})
+target_link_libraries(RxC ffcall ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${Boost_SYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} )
 
 
 

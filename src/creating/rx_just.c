@@ -25,19 +25,20 @@ static void on_next(void* capture, va_alist arg_list){
 }
 
 /*!
- *
- * @param item
- * @return
+ * Create producer that emit single item
+ * @param item Emited item
+ * @return Producer
  */
 source_t* rx_just(void *item) {
     D_INST_OF(source,s);
+
     captured_t* cp = malloc(sizeof(captured_t));
     cp->self = s;
     cp->item = item;
 
     s->on_next = alloc_callback(on_next, cp);
-    s->on_completed = alloc_callback(dummy_on_completed, s);
-    s->on_error = alloc_callback(dummy_on_error, s);
+    s->on_completed = alloc_callback(default_on_completed, s);
+    s->on_error = alloc_callback(default_on_error, s);
 
     return s;
 }

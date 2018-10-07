@@ -5,7 +5,7 @@
 #include "functional/rx_functional.h"
 #include <stdlib.h>
 
-void dummy_on_next(void* capture, va_alist arg_list){
+void default_on_next(void *capture, va_alist arg_list){
     source_t* self = capture;
 
     va_start_ptr(arg_list,void*);
@@ -17,7 +17,7 @@ void dummy_on_next(void* capture, va_alist arg_list){
     return;
 }
 
-void dummy_on_completed(void* capture, va_alist arg_list){
+void default_on_completed(void *capture, va_alist arg_list){
     source_t* self = capture;
 
     va_start_ptr(arg_list,void*);
@@ -30,11 +30,11 @@ void dummy_on_completed(void* capture, va_alist arg_list){
     return;
 }
 
-void dummy_on_error(void* capture, va_alist arg_list){
+void default_on_error(void *capture, va_alist arg_list){
     source_t* self = capture;
 
     va_start_ptr(arg_list, layout_throwable_t*);
-    layout_throwable_t* obj = va_arg_ptr(arg_list, layout_throwable_t*);
+    LAYOUT(THOWABLE) obj = va_arg_ptr(arg_list, LAYOUT(THOWABLE));
 
     self->is_active = false;
     for (source_t** curr_el = self->subscribers; *curr_el != NULL; curr_el++) {
@@ -75,7 +75,7 @@ source_t*  subscribe(
     source_t* operator,
     void(*on_next)(void* obj),
     void(*on_completed)(),
-    void(*on_error)(layout_throwable_t* error),
+    void(*on_error)(LAYOUT(THOWABLE) error),
     void(*on_subscribe)(struct source_t* target, source_t* subscriber),
     void(*on_unsubscribe)(struct source_t* target, source_t* subscriber)
 ){

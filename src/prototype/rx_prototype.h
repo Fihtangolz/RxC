@@ -8,18 +8,19 @@
 #include "stddef.h"
 #include "stdbool.h"
 
-#define GEN_LAYOUT(name,body) \
+#define GEN_LAYOUT(name) \
 typedef struct { \
-    body \
+    name ## _BODY\
 } layout_ ## name ## _t; \
 
 #define LAYOUT_CAST(name, obj_pointer) ((layout_ ## name ## _t*)obj_pointer)
+#define LAYOUT(name) layout_ ## name ## _t*
 
 typedef char* type_t;
 #define BASE_BODY \
 type_t type;\
 
-GEN_LAYOUT(base, BASE_BODY)
+GEN_LAYOUT(BASE)
 
 /* INST_OF */
 #define CRT_ONE_S_INST(_, prototype, instance_name) \
