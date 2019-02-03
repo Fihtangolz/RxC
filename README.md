@@ -1,10 +1,11 @@
 # RxC : Reactive Extensions for C boosted by Prototype Programming 
 ---
-Good point to rx_start Reactive programming is 
+Good points to start Reactive programming:
 - <http://reactivex.io/>
 - <http://qaru.site/questions/1243/what-is-functional-reactive-programming>
 - <http://conal.net/fran/tutorial.htm>
 - <https://www.webcitation.org/67lNOmS7t>
+- Book Reactive Design Patterns by Roland Kuhn
 
 Example: 
 
